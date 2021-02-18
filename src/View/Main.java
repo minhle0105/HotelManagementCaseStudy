@@ -19,10 +19,11 @@ public class Main {
                   String userPassword = new String(console.readPassword());
                   if (userName.equals("admin") && userPassword.equals("Saigon@2018")) {
                         notRegistered = false;
+                        System.out.println("Successfully Logged In");
                         showMenu();
                   }
                   else {
-                        System.out.println("Not registered user!");
+                        System.out.println("Incorrect UserName or Password");
                   }
             }
       }
