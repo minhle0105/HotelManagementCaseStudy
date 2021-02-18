@@ -1,5 +1,6 @@
 package View;
 
+import java.io.Console;
 import java.util.Scanner;
 
 import Behavior.Management;
@@ -7,6 +8,24 @@ import Entity.Room;
 
 public class Main {
       static Scanner sc = new Scanner(System.in);
+      static Console console = System.console();
+
+      public static void logIn() {
+            boolean notRegistered = true;
+            while (notRegistered) {
+                  System.out.println("Enter username");
+                  String userName = sc.nextLine();
+                  System.out.println("Enter password");
+                  String userPassword = new String(console.readPassword());
+                  if (userName.equals("admin") && userPassword.equals("Saigon@2018")) {
+                        notRegistered = false;
+                        showMenu();
+                  }
+                  else {
+                        System.out.println("Not registered user!");
+                  }
+            }
+      }
 
       public static void showMenu() {
             boolean condition = true;
@@ -18,7 +37,7 @@ public class Main {
                         System.out.println("2 - Show customer list");
                         System.out.println("3 - Check Out");
                         System.out.println("4 - Update customer information");
-                        System.out.println("5 - Quit");
+                        System.out.println("5 - Log out");
                         int userChoice = Integer.parseInt(sc.nextLine());
                         System.out.println("______________");
                         switch (userChoice) {
@@ -36,7 +55,7 @@ public class Main {
                                     m.changeInfo();
                                     break;
                               case 5:
-                                    System.out.println("Quit");
+                                    System.out.println("Logged out");
                                     condition = false;
                         }
                   } catch (Exception e) {
@@ -47,6 +66,6 @@ public class Main {
       }
 
       public static void main(String[] args) {
-            showMenu();
+            logIn();
       }
 }
