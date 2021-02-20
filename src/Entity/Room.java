@@ -29,5 +29,3 @@ public class Room implements Serializable {
             this.roomRate = roomRate;
       }
 }
-
-

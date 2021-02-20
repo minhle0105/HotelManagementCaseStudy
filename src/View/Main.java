@@ -4,12 +4,14 @@ import java.io.Console;
 import java.util.Scanner;
 
 import Behavior.Management;
+import Behavior.Password;
 import Entity.Room;
 
 public class Main {
       static Scanner sc = new Scanner(System.in);
       static Console console = System.console();
-
+      static Password p = new Password();
+      
       public static void logIn() {
             boolean notRegistered = true;
             while (notRegistered) {
@@ -17,10 +19,12 @@ public class Main {
                   String userName = sc.nextLine();
                   System.out.println("Enter password");
                   String userPassword = new String(console.readPassword());
-                  if (userName.equals("admin") && userPassword.equals("Saigon@2018")) {
-                        notRegistered = false;
-                        System.out.println("Successfully Logged In");
-                        showMenu();
+                  if (userName.equals("admin")) {
+                        if (p.validatePassword(userPassword)) {
+                              notRegistered = false;
+                              System.out.println("Successfully Logged In");
+                              showMenu();
+                        }
                   }
                   else {
                         System.out.println("Incorrect UserName or Password");
