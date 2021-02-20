@@ -9,7 +9,7 @@ public class Password {
 		}
 		
 		for (int i = 0; i < password.length(); i ++) {
-			if (((char) password.charAt(i) - 6) != PASSWORDENCRYPTED.charAt(i)) {
+			if (((char) password.charAt(i) - key) != PASSWORDENCRYPTED.charAt(i)) {
 				return false;
 			}
 		}
